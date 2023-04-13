@@ -1,4 +1,11 @@
-# Wersja SDK 1.1.0 będzie kompatibilna z wersją enova365 2106.0.0 - została opublikowana do przeprowadzenia testów weryfikacyjnych
+# Wersja SDK 1.1.2 jest kompatybilna z poprzednimi wersjami bibliotek FrameworkSoneta, a także do wykorzystania do kompilacji w netstandard2.0 od wersji enova365 2204.3.6
+
+# Wersja SDK 1.1.0 jest do wykorzystania od wersji enova365 2106.0.0
+**!!! Korzystanie z tej wersji SDK wymaga usunięcia z plików modul.business.xml i modul.config.xml wpisu (jeżeli występuje):**
+
+`<import>generator<import>`
+
+Pozostawienie wpisu spowoduje konflikt dwóch sposobów pobierania generatora - nowego, automatycznego z SDK oraz starego - kopiowania generatora do folderu projektu, co zaskutkuje wygenerowaniem pustych plików.cs przez generator.
 
 # Soneta.MsBuild.SDK
 
@@ -12,7 +19,7 @@ SDK (Software Development Kit) jest to zestaw narzędzi dla programistów niezb�
   <li><b>Common.item.props</b> -plik zapewnia automatyczną obsługę dołączania nowych plików do projektu. Między innymi pliki *.pageform.xml, *dbinit.xml zostaną automatycznie skonfigurowane jako EmbeddResource.</li>
 
   <li><b>Sdk.props</b> -plik zapewnia poprawne utworzenie referencji dla różnych typów projektów np. Dla projektu testowego zostaną załadowane biblioteki testowe.</li>
-  <li><b>Skd.targets</b> -plik przechowuje informacje dotyczące procesu budowanie m.in. automatycznego uruchamiania generatora tworzenia definicji baz danych (*.business.cs). Podsumowując prostymi słowami, od teraz nie będzie trzeba się zastanawiać, którą wersję generatora powinniśmy podpiąć, ponieważ zostanie to wykonane automatycznie.</li>
+  <li><b>Sdk.targets</b> -plik przechowuje informacje dotyczące procesu budowanie m.in. automatycznego uruchamiania generatora tworzenia definicji baz danych (*.business.cs). Podsumowując prostymi słowami, od teraz nie będzie trzeba się zastanawiać, którą wersję generatora powinniśmy podpiąć, ponieważ zostanie to wykonane automatycznie.</li>
 </ul>
 
 # Pierwsze kroki
@@ -59,7 +66,7 @@ Kolejnym ważnym elementem znajdującym się w pliku „Directory.Build.props je
 # Informacje Ogólne
 Soneta.sdk obsługuje **3 typy projektów**, które można stworzyć. W zależności od rodzaju projektu pobierane są inne biblioteki. Możemy stworzyć takie projekty jak:<br>
 <ul>
-   <li>Projekt testowy, który w swojej nazwie będzie zawierał słowo "**Tests**"</li>
+   <li>Projekt testowy, który w swojej nazwie będzie zawierał słowo "**Test**"</li>
    <li>Projekt interfejsu użytkownika kończacy się na wyrażeniu "***.UI**"</li>
    <li>Projekt dodatku zawierający elementy logiki biznesowej</li>
 </ul>
